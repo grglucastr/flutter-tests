@@ -12,7 +12,7 @@ class TransactionsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Transactions'),
+        title: const Text('Transactions'),
       ),
       body: FutureBuilder<List<Transaction>>(
         future: _webClient.findAll(),
@@ -27,24 +27,24 @@ class TransactionsList extends StatelessWidget {
               break;
             case ConnectionState.done:
               if(snapshot.hasData){
-                final List<Transaction> transactions = snapshot.data;
-                if (transactions.isNotEmpty) {
+                final List<Transaction>? transactions = snapshot.data;
+                if (transactions!.isNotEmpty) {
                   return ListView.builder(
                     itemBuilder: (context, index) {
                       final Transaction transaction = transactions[index];
                       return Card(
                         child: ListTile(
-                          leading: Icon(Icons.monetization_on),
+                          leading: const Icon(Icons.monetization_on),
                           title: Text(
                             transaction.value.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 24.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           subtitle: Text(
                             transaction.contact.accountNumber.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16.0,
                             ),
                           ),

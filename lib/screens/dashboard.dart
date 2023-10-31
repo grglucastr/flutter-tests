@@ -7,7 +7,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: const Text('Dashboard'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -17,7 +17,7 @@ class Dashboard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Image.asset('images/bytebank_logo.png'),
           ),
-          Container(
+          SizedBox(
             height: 120,
             child: ListView(
               scrollDirection: Axis.horizontal,
@@ -43,7 +43,7 @@ class Dashboard extends StatelessWidget {
   void _showContactsList(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => ContactsList(),
+        builder: (context) => const ContactsList(),
       ),
     );
   }
@@ -65,7 +65,7 @@ class _FeatureItem extends StatelessWidget {
   _FeatureItem(
     this.name,
     this.icon, {
-    @required this.onClick,
+    required this.onClick,
   });
 
   @override
@@ -77,7 +77,7 @@ class _FeatureItem extends StatelessWidget {
         child: InkWell(
           onTap: () => onClick(),
           child: Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             width: 150,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,7 +90,7 @@ class _FeatureItem extends StatelessWidget {
                 ),
                 Text(
                   name,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16.0,
                   ),

@@ -4,10 +4,10 @@ class ResponseDialog extends StatelessWidget {
   final String title;
   final String message;
   final String buttonText;
-  final IconData icon;
+  final IconData? icon;
   final Color colorIcon;
 
-  ResponseDialog({
+  const ResponseDialog({
     this.title = "",
     this.message = "",
     this.icon,
@@ -19,8 +19,8 @@ class ResponseDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Visibility(
-        child: Text(title),
         visible: title.isNotEmpty,
+        child: Text(title),
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
@@ -28,6 +28,7 @@ class ResponseDialog extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Visibility(
+            visible: icon != null,
             child: Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Icon(
@@ -36,25 +37,24 @@ class ResponseDialog extends StatelessWidget {
                 color: colorIcon,
               ),
             ),
-            visible: icon != null,
           ),
           Visibility(
+            visible: message.isNotEmpty,
             child: Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Text(
                 message,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24.0,
                 ),
               ),
             ),
-            visible: message.isNotEmpty,
           )
         ],
       ),
       actions: <Widget>[
-        FlatButton(
+        ElevatedButton(
           child: Text(buttonText),
           onPressed: () => Navigator.pop(context),
         )
@@ -68,7 +68,7 @@ class SuccessDialog extends StatelessWidget {
   final String message;
   final IconData icon;
 
-  SuccessDialog(
+  const SuccessDialog(
     this.message, {
     this.title = 'Success',
     this.icon = Icons.done,
@@ -90,7 +90,7 @@ class FailureDialog extends StatelessWidget {
   final String message;
   final IconData icon;
 
-  FailureDialog(
+  const FailureDialog(
     this.message, {
     this.title = 'Failure',
     this.icon = Icons.warning,
